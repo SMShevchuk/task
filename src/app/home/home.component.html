@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="blockBtn">
+    <a routerLink="/changing" routerLinkActive="active"  class="btn btn-outline-secondary">Add</a>
+    <a routerLink="/changing" routerLinkActive="active" class="btn btn-outline-secondary disabled">Look</a>
+    <a routerLink="/changing" routerLinkActive="active" class="btn btn-outline-secondary disabled">Edit</a>
+    <a routerLink="/changing" routerLinkActive="active" class="btn btn-outline-secondary disabled">Delete</a>
+</div>
+
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Last name</th>
+        <th scope="col">Name</th>
+        <th scope="col">Middle name</th>
+        <th scope="col">Number of cars</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="dataLine" #per *ngFor = "let person of people" 
+          (click)="choosePerson(per);" style="padding: 3px;">
+        <td (click)="choosePerson(per);">{{person.lastName}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.middleName}}</td>
+        <td>1</td>
+      </tr>
+      
+    </tbody>
+  </table>
