@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ChangingComponent } from './changing/changing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OwnersService } from './owners.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [OwnersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

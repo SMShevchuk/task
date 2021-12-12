@@ -14,9 +14,8 @@
     margin: 30px auto;
 
     .dataLine:hover td {
-        transition-duration: 0.5s;
-        background: rgb(145, 31, 31);
-        color: black;
+        // transition-duration: 0.1s;
+        font-weight: 700;
     }
 
     td {
