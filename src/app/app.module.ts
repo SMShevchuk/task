@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { ChangingComponent } from './changing/changing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OwnersService } from './owners.service';
+import { NewOwnerComponent } from './new-owner/new-owner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChangingComponent
+    ChangingComponent,
+    NewOwnerComponent
   ],
   imports: [
     BrowserModule,

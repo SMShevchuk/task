@@ -3,11 +3,11 @@ import { FormControl, Validators } from '@angular/forms';
 import { OwnersService } from '../owners.service';
 
 @Component({
-  selector: 'app-changing',
-  templateUrl: './changing.component.html',
-  styleUrls: ['./changing.component.scss']
+  selector: 'app-new-owner',
+  templateUrl: './new-owner.component.html',
+  styleUrls: ['./new-owner.component.scss']
 })
-export class ChangingComponent implements OnInit {
+export class NewOwnerComponent implements OnInit {
 
   nameControl: FormControl | any;
   lastNameControl: FormControl | any;
@@ -17,17 +17,17 @@ export class ChangingComponent implements OnInit {
   modelControl: FormControl | any;
   yearControl: FormControl | any;
 
-  public cars = [
-    { number: 'AA111XX',
-      brand: 'audi',
-      model: 'a6',
-      year: 2010 },
+  // public cars = [
+  //   { number: 'AA111XX',
+  //     brand: 'audi',
+  //     model: 'a6',
+  //     year: 2010 },
 
-      { number: 'AA111XX',
-      brand: 'audi',
-      model: 'a6',
-      year: 2010 }
-  ]
+  //     { number: 'AA111XX',
+  //     brand: 'audi',
+  //     model: 'a6',
+  //     year: 2010 }
+  // ]
   public people: any;
   constructor(private _ownerService: OwnersService) { }
 
@@ -44,4 +44,13 @@ export class ChangingComponent implements OnInit {
     console.log(7);
   }
 
+  public idPers: any = new Date();
+  
+  public addNewOwner() {
+    let id = this.idPers.getTime();
+    console.log(id);
+    this._ownerService.add(this.nameControl.value, this.lastNameControl.value, this.cityControl.value,
+      this.carNumberControl.value, this.brendControl.value, this.modelControl.value,
+      this.yearControl.value, id);
+  }
 }

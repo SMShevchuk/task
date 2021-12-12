@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwnersService } from '../owners.service';
 
 @Component({
   selector: 'app-home',
@@ -7,47 +8,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  public isFalse:boolean = true;
-  public people:any = [
-    {
-      name: 'djon',
-      middleName: 'djonovich',
-      lastName: 'zzx',
-      cars: ['audi', 'bmw', 'lada']
-    },
-    {
-      name: 'djon2',
-      middleName: 'djonovich2',
-      lastName: 'zzjkx',
-      cars: ['audi', 'bmw']
-    },
-  ];
+  public people: any;
+  public owner: any;
+  public personLooc: any;
+  public personEdit: any;
 
-  public humen:any;
+  constructor(private _ownerService: OwnersService) {
 
-  public choosePerson(el:any) {
-    this.humen = el;
-    // let line = el.parentNode.childNodes;
-    // for (let i=0; i<line.length; i++) {
-    //   line[i].style.fontWeight = "400";
-    //   console.log((line[i]) );
-    // }
-    
-    console.log(el);
-    el.style.fontWeight = "700";
-    
   }
 
-  public removeLine() {
-    let answer = confirm("Are you soure delete" );
-    if (answer) {
-      console.log(answer);
-    }
-  }
-
-  constructor() { }
 
   ngOnInit(): void {
+    this.people = this._ownerService.getAll();
   }
 
+  public choosePerson(el:any, person:any) {
+    this.owner = el;
+    console.log(this.owner);
+    document.querySelector("#look")?.classList.remove("disabled");
+    document.querySelector("#edit")?.classList.remove("disabled");
+   
+    el.style.fontWeight = "700";
+
+    console.log(person);
+    
+  }
+  public lookPerson() {
+    document.querySelector("#look")?.classList.add("disabled");
+  }
+  public editPerson() {
+    document.querySelector("#edit")?.classList.add("disabled");
+  }
+
+  public removeLine(per:any) {
+    console.log(per);
+    let answer = confirm("You really want to delete?");
+    if (answer==true) {
+      this._ownerService.remove(per);
+      this.people = this._ownerService.getAll();
+      document.querySelector("#look")?.classList.add("disabled");
+      document.querySelector("#edit")?.classList.add("disabled");
+    }
+  }
 }

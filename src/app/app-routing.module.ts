@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChangingComponent } from './changing/changing.component';
 import { HomeComponent } from './home/home.component';
+import { NewOwnerComponent } from './new-owner/new-owner.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -9,6 +10,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
   { path: 'changing', component: ChangingComponent },
+
+  { path: 'newowner', component: NewOwnerComponent },
+
+
 ];
 
 @NgModule({

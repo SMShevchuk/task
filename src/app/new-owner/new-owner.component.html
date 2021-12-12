@@ -1,0 +1,47 @@
+
+
+
+<form >
+    <div class="leftCol  w-50">
+      <h2>Owner:</h2>
+      <div class="form-floating mb-3">
+        <input type="text" [formControl]="lastNameControl" class="form-control" id="floatingLastName" placeholder="Your last name:">
+        <label for="floatingLastName">Last name:</label>
+      </div>
+      <div class="form-floating mb-3">
+          <input type="text" [formControl]="nameControl" class="form-control" id="floatingName" placeholder="Your name:">
+          <label for="floatingName">Name:</label>
+      </div>
+      <div class="form-floating mb-3">
+          <input type="text" [formControl]="cityControl" class="form-control" id="floatingCity" placeholder="Your city:">
+          <label for="floatingMiddleName">City:</label>
+      </div>
+    </div>
+  
+    <div class="rightCol  w-50"> 
+      <h2>Cars:</h2>
+      <div class="form-floating mb-3">
+        <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
+        <label for="floatingLastName">Car number:</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" [formControl]="brendControl" class="form-control" id="floatingBrend" placeholder="Your last name:">
+        <label for="floatingLastName">Brend:</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" [formControl]="modelControl" class="form-control" id="floatingModel" placeholder="Your last name:">
+        <label for="floatingLastName">Model:</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" [formControl]="yearControl" class="form-control" id="floatingYear" placeholder="Your last name:">
+        <label for="floatingLastName">Year:</label>
+      </div>
+    </div>
+
+        
+  </form> 
+  <button type="button" (click)="addNewOwner();" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
+  <button type="button" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> 
+      <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
+  </button>
+  
