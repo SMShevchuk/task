@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { OwnersService } from '../owners.service';
 
 @Component({
@@ -8,15 +9,26 @@ import { OwnersService } from '../owners.service';
 })
 export class HomeComponent implements OnInit {
 
+
   public people: any;
   public owner: any;
   public personLooc: any;
+  public personLoocId: any;
   public personEdit: any;
 
   constructor(private _ownerService: OwnersService) {
 
   }
 
+  sendMessage(ownerId: any): void {
+    // send message to subscribers via observable subject
+    this._ownerService.sendMessage(ownerId);
+  }
+
+  clearMessage(): void {
+      // clear message
+      this._ownerService.clearMessage();
+  }
 
   ngOnInit(): void {
     this.people = this._ownerService.getAll();
@@ -31,10 +43,14 @@ export class HomeComponent implements OnInit {
     el.style.fontWeight = "700";
 
     console.log(person);
-    
+   
+    this.personLoocId = person.id;
   }
   public lookPerson() {
+    console.log(this.personLoocId);
     document.querySelector("#look")?.classList.add("disabled");
+    this.sendMessage(this.personLoocId);
+    
   }
   public editPerson() {
     document.querySelector("#edit")?.classList.add("disabled");
