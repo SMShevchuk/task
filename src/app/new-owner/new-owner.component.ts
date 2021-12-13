@@ -52,5 +52,7 @@ export class NewOwnerComponent implements OnInit {
     this._ownerService.add(this.nameControl.value, this.lastNameControl.value, this.cityControl.value,
       this.carNumberControl.value, this.brendControl.value, this.modelControl.value,
       this.yearControl.value, id);
+    
+      this._ownerService.getOwnerId(1);
   }
 }

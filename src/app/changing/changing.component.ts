@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { OwnersService } from '../owners.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { OwnersService } from '../owners.service';
   styleUrls: ['./changing.component.scss']
 })
 export class ChangingComponent implements OnInit {
+
+  
 
   nameControl: FormControl | any;
   lastNameControl: FormControl | any;
@@ -29,7 +32,19 @@ export class ChangingComponent implements OnInit {
       year: 2010 }
   ]
   public people: any;
-  constructor(private _ownerService: OwnersService) { }
+
+  message: any;
+  subscription: Subscription;
+
+  constructor(private _ownerService: OwnersService) {
+    this.subscription = this._ownerService.getMessage().subscribe(message => { this.message = message; });
+    console.log(this.message);
+  }
+
+   ngOnDestroy() {
+      // unsubscribe to ensure no memory leaks
+      this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.nameControl = new FormControl();

@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
-
+import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class OwnersService {
+
+  private subject = new Subject<any>();
+
+  sendMessage(message: number) {
+    console.log(777);
+    this.subject.next({ text: message });
+}
+
+clearMessage() {
+    this.subject.next('');
+}
+
+getMessage(): Observable<any> {
+    return this.subject.asObservable();
+}
+getId(idEl:number) {
+  console.log(idEl);
+  return idEl;
+}
 
   private people:any = [
     {
@@ -43,6 +62,16 @@ export class OwnersService {
 
   public getAll() {
     return this.people;
+  }
+
+  public getOwnerId(id:number) {
+    console.log(this.people.length);
+    for (let i=0; i<this.people.length; i++) {
+      if (this.people[i].id == id) {
+        console.log(this.people[i]);
+        return this.people[i];
+      }
+    }
   }
 
   public remove(id: number) {
