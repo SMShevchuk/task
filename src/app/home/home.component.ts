@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit {
     document.querySelector("#edit")?.classList.remove("disabled");
    
     el.style.fontWeight = "700";
-
+    this._ownerService.getId(person.id);
+    this._ownerService.getIdMain();
     console.log(person);
    
     this.personLoocId = person.id;
@@ -49,11 +50,13 @@ export class HomeComponent implements OnInit {
   public lookPerson() {
     console.log(this.personLoocId);
     document.querySelector("#look")?.classList.add("disabled");
+    document.querySelector("#edit")?.classList.add("disabled");
     this.sendMessage(this.personLoocId);
     
   }
   public editPerson() {
     document.querySelector("#edit")?.classList.add("disabled");
+    document.querySelector("#look")?.classList.add("disabled");
   }
 
   public removeLine(per:any) {

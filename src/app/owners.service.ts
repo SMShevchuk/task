@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 export class OwnersService {
 
   private subject = new Subject<any>();
+  private  ownerIdMain:any;
 
   sendMessage(message: number) {
     console.log(777);
@@ -21,10 +22,16 @@ getMessage(): Observable<any> {
 }
 getId(idEl:number) {
   console.log(idEl);
+  this.ownerIdMain = idEl;
   return idEl;
 }
 
+getIdMain() {
+  console.log(this.ownerIdMain);
+  return this.ownerIdMain;
+}
   private people:any = [
+   
     {
       id: 1,
       name: 'djon',

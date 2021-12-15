@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OwnersService } from '../owners.service';
 
@@ -32,19 +33,20 @@ export class ChangingComponent implements OnInit {
       year: 2010 }
   ]
   public people: any;
-
-  message: any;
-  subscription: Subscription;
+  public idTemp:any;
+  // message: any;
+  // subscription: Subscription;
 
   constructor(private _ownerService: OwnersService) {
-    this.subscription = this._ownerService.getMessage().subscribe(message => { this.message = message; });
-    console.log(this.message);
+    // this.subscription = this._ownerService.getMessage().subscribe(message => { this.message = message; });
+    // console.log(this.message);
+    
   }
 
-   ngOnDestroy() {
-      // unsubscribe to ensure no memory leaks
-      this.subscription.unsubscribe();
-  }
+  //  ngOnDestroy() {
+  //     // unsubscribe to ensure no memory leaks
+  //     this.subscription.unsubscribe();
+  // }
 
   ngOnInit(): void {
     this.nameControl = new FormControl();
@@ -57,6 +59,11 @@ export class ChangingComponent implements OnInit {
     this.people = this._ownerService.getAll();
     console.log(this.people);
     console.log(7);
+
+    this.idTemp = this._ownerService.getIdMain();
+
+
+
   }
 
 }
