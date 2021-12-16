@@ -20,15 +20,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  sendMessage(ownerId: any): void {
-    // send message to subscribers via observable subject
-    this._ownerService.sendMessage(ownerId);
-  }
-
-  clearMessage(): void {
-      // clear message
-      this._ownerService.clearMessage();
-  }
+ 
 
   ngOnInit(): void {
     this.people = this._ownerService.getAll();
@@ -51,7 +43,7 @@ export class HomeComponent implements OnInit {
     console.log(this.personLoocId);
     document.querySelector("#look")?.classList.add("disabled");
     document.querySelector("#edit")?.classList.add("disabled");
-    this.sendMessage(this.personLoocId);
+    
     
   }
   public editPerson() {

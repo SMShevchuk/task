@@ -1,25 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class OwnersService {
 
-  private subject = new Subject<any>();
+  
   private  ownerIdMain:any;
 
-  sendMessage(message: number) {
-    console.log(777);
-    this.subject.next({ text: message });
-}
-
-clearMessage() {
-    this.subject.next('');
-}
-
-getMessage(): Observable<any> {
-    return this.subject.asObservable();
-}
 getId(idEl:number) {
   console.log(idEl);
   this.ownerIdMain = idEl;
@@ -37,7 +25,29 @@ getIdMain() {
       name: 'djon',
       city: 'derb',
       lastName: 'zzx',
-      cars: ['audi', 'bmw', 'lada']
+      cars: [
+        {
+          id: 1,
+          number: 'AA0001XX',
+          brand: 'audi',
+          model: 'a6',
+          year: 2010 
+        },
+        {
+          id: 2,
+          number: 'AA0002XX',
+          brand: 'audi',
+          model: 'a6',
+          year: 2018 
+        },  
+        {
+          id: 3,
+          number: 'AA0003XX',
+          brand: 'audi',
+          model: 'a6',
+          year: 2018 
+        },  
+      ]
     },
     {
       id: 2,
@@ -46,19 +56,22 @@ getIdMain() {
       lastName: 'zzjkx',
       cars: [
         {
+          id: 1,
           number: 'AA1111XX',
           brand: 'audi',
           model: 'a6',
           year: 2010 
         },
         {
+          id: 2,
           number: 'AA1112XX',
           brand: 'audi',
           model: 'a6',
           year: 2018 
         },  
         {
-          number: 'AA1112XX',
+          id: 3,
+          number: 'AA1113XX',
           brand: 'audi',
           model: 'a6',
           year: 2018 
@@ -83,6 +96,12 @@ getIdMain() {
 
   public remove(id: number) {
     return this.people = this.people.filter((owner: { id: number; }) => owner.id !== id);
+  }
+
+  public removeCar(auto: any) {
+    let id = auto.id;
+    console.log(id);
+    return this.people.cars = this.people.cars.filter((car: { id: number; }) => car.id !== id);
   }
 
   public add(name:any, lastName:any, city:any, carNumber:any, brend:any, model:any, year:any, id:any) {

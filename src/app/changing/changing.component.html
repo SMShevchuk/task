@@ -1,43 +1,4 @@
-
-
-<!-- <form >
-  <div class="leftCol  w-50">
-    <h2>Owner:</h2>
-    <div class="form-floating mb-3">
-      <input type="text" [formControl]="lastNameControl" class="form-control" id="floatingLastName" placeholder="Your last name:">
-      <label for="floatingLastName">Last name:</label>
-    </div>
-    <div class="form-floating mb-3">
-        <input type="text" [formControl]="nameControl" class="form-control" id="floatingName" placeholder="Your name:">
-        <label for="floatingName">Name:</label>
-    </div>
-    <div class="form-floating mb-3">
-        <input type="text" [formControl]="cityControl" class="form-control" id="floatingCity" placeholder="Your city:">
-        <label for="floatingMiddleName">City:</label>
-    </div>
-  </div>
-
-  <div class="rightCol  w-50"> 
-    <h2>Cars:</h2>
-    <div class="form-floating mb-3">
-      <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
-      <label for="floatingLastName">Car number:</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" [formControl]="brendControl" class="form-control" id="floatingBrend" placeholder="Your last name:">
-      <label for="floatingLastName">Brend:</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" [formControl]="modelControl" class="form-control" id="floatingModel" placeholder="Your last name:">
-      <label for="floatingLastName">Model:</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" [formControl]="yearControl" class="form-control" id="floatingYear" placeholder="Your last name:">
-      <label for="floatingLastName">Year:</label>
-    </div>
-  </div> -->
-
-    <table class="table table-dark table-striped">
+    
       <div class="leftCol  w-50">
         <h2>Owner:</h2>
         <div class="form-floating mb-3">
@@ -53,6 +14,7 @@
             <label for="floatingMiddleName">City:</label>
         </div>
       </div>
+      <table class="table table-dark table-striped">
         <thead>
           <tr>
             <th scope="col">Car number</th>
@@ -68,14 +30,34 @@
             <td>{{car.brand}}</td>
             <td>{{car.model}}</td>
             <td>{{car.year}}</td>
-            <td><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+            <td><button type="button" (click)="removeLine(car)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
           </tr>
-          <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Add auto</button>
-        </tbody>
+          
+          </tbody>
       </table>
+
       
-<!-- </form>  -->
-<button type="button" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
+      <button type="button" (click)="addAuto()" class="btn btn-primary"><i class="fas fa-plus"></i> Add auto</button>
+       
+
+      <div #addCar>
+        
+          <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
+          <label for="floatingLastName">Car number:</label>
+        
+          <input type="text" [formControl]="brendControl" class="form-control" id="floatingBrend" placeholder="Brend name:">
+          <label for="floatingLastName">Brend:</label>
+        
+          <input type="text" [formControl]="modelControl" class="form-control" id="floatingModel" placeholder="Model name:">
+          <label for="floatingLastName">Model:</label>
+        
+          <input type="text" [formControl]="yearControl" class="form-control" id="floatingYear" placeholder="Year:">
+          <label for="floatingLastName">Year:</label>
+        
+      </div>
+      
+
+<button type="button" (click)="saveAddCar()" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
 <button type="button" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> 
     <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
 </button>
