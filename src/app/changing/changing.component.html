@@ -30,17 +30,17 @@
             <td>{{car.brand}}</td>
             <td>{{car.model}}</td>
             <td>{{car.year}}</td>
-            <td><button type="button" (click)="removeLine(car)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+            <td><button type="button" (click)="removeLine(car, cars)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
           </tr>
           
           </tbody>
       </table>
 
       
-      <button type="button" (click)="addAuto()" class="btn btn-primary"><i class="fas fa-plus"></i> Add auto</button>
+      <button id="addButton"  type="button" (click)="addAuto()" class="btn btn-primary"><i class="fas fa-plus"></i> Add auto</button>
        
 
-      <div #addCar>
+      <div id="addCar">
         
           <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
           <label for="floatingLastName">Car number:</label>

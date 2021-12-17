@@ -45,7 +45,10 @@ export class ChangingComponent implements OnInit {
 
   }
   addAuto() {
-    console.log(77);
+    document.querySelector('#addButton')?.setAttribute("disabled", "disabled");
+    console.log(document.querySelector('#addCar'));
+    let el = document.querySelector('#addCar');
+    el.style.display = "block";
   }
 
   public newCar:any;
@@ -58,15 +61,20 @@ export class ChangingComponent implements OnInit {
     });
   }
 
-  public removeLine(line:any) {
+  public removeLine(line:any, cars:any) {
    
     let answer = confirm("You really want to delete?");
     if (answer==true) {
       console.log(line);
-      this._ownerService.removeCar(line);
+      console.log(cars);
+      this._ownerService.removeCar(line, cars);
     }
   }
 
   
 
 }
+function disabled(disabled: any) {
+  throw new Error('Function not implemented.');
+}
+
