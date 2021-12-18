@@ -40,8 +40,11 @@
 
         
   </form> 
-  <button type="button" (click)="addNewOwner();" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
-  <button type="button" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> 
-      <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
-  </button>
+  <div class="bottomBtn">
+    <button type="button" (click)="addNewOwner();" class="btn btn-dark"><a class="linkBack" routerLink="/home" routerLinkActive="active"><i class="far fa-save"></i> Save</a></button>
+    <button type="button" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> 
+        <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
+    </button>
+  </div>
+
   

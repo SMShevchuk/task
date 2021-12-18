@@ -13,7 +13,7 @@ export class ChangingComponent implements OnInit {
   lastNameControl: FormControl | any;
   cityControl: FormControl | any;
   carNumberControl: FormControl | any;
-  brendControl: FormControl | any;
+  brandControl: FormControl | any;
   modelControl: FormControl | any;
   yearControl: FormControl | any;
 
@@ -38,24 +38,30 @@ export class ChangingComponent implements OnInit {
     this.lastNameControl = new FormControl(this.ownerForId.lastName);
     this.cityControl = new FormControl(this.ownerForId.city);
     this.carNumberControl = new FormControl();
-    this.brendControl = new FormControl();
+    this.brandControl = new FormControl();
     this.modelControl = new FormControl();
     this.yearControl = new FormControl();
     
 
   }
   addAuto() {
-    document.querySelector('#addButton')?.setAttribute("disabled", "disabled");
+    let but:any = document.querySelector('#addButton');
+    but.setAttribute("disabled", true);
     console.log(document.querySelector('#addCar'));
-    let el = document.querySelector('#addCar');
+    let el:any = document.querySelector('#addCar');
     el.style.display = "block";
   }
 
   public newCar:any;
   saveAddCar() {
+    let but:any = document.querySelector('#addButton');
+    console.log(but);
+    but.setAttribute("disabled", false);
+    let form:any = document.querySelector('#addCar');
+    form.style.display = "none";
     this.ownerForId.cars.push({
       number: this.carNumberControl.value,
-      brand: this.brendControl.value,
+      brand: this.brandControl.value,
       model: this.modelControl.value,
       year: this.yearControl.value
     });

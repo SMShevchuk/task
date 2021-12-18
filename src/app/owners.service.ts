@@ -47,6 +47,7 @@ getIdMain() {
       ]
     },
     {
+      id: 2,
       name: 'djon2',
       city: 'defr',
       lastName: 'zzjkx',

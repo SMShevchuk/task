@@ -16,12 +16,31 @@ form {
         background-color: transparent;
     }
 
-    .linkBack {
-        color: #fff;
-        text-decoration: none;
-        
-    }
+    
 }
 #addCar {
+    
     display: none;
+
+    div { 
+        margin: 10px auto;
+        width: 50%;
+        background: silver;
+        border: double 2px black;
+    }
+
+    .btnSave {
+        text-align: center;
+        border: none;
+        background: transparent;
+
+        button {
+            width: 30%;
+        }
+    }
+}
+.linkBack {
+    color: #fff;
+    text-decoration: none;
+    
 }

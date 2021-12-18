@@ -41,23 +41,32 @@
        
 
       <div id="addCar">
-        
+        <div>
           <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
           <label for="floatingLastName">Car number:</label>
-        
-          <input type="text" [formControl]="brendControl" class="form-control" id="floatingBrend" placeholder="Brend name:">
-          <label for="floatingLastName">Brend:</label>
-        
+        </div>
+        <div>
+          <input type="text" [formControl]="brandControl" class="form-control" id="floatingBrend" placeholder="Brand name:">
+          <label for="floatingLastName">Brand:</label>
+        </div>
+        <div>
           <input type="text" [formControl]="modelControl" class="form-control" id="floatingModel" placeholder="Model name:">
           <label for="floatingLastName">Model:</label>
-        
+        </div>
+        <div>
           <input type="text" [formControl]="yearControl" class="form-control" id="floatingYear" placeholder="Year:">
           <label for="floatingLastName">Year:</label>
-        
+        </div>
+        <div class="btnSave">
+          <button type="button" (click)="saveAddCar()" class="btn btn-primary center"><i class="far fa-save"></i> Save</button>
+        </div>
+          
       </div>
       
 
-<button type="button" (click)="saveAddCar()" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
-<button type="button" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> 
+<div class="m-3">
+  <button type="button" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> 
     <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
-</button>
+  </button>
+</div>
+

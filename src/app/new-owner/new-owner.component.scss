@@ -22,3 +22,18 @@ form {
         
     }
 }
+.bottomBtn {
+    border: double 12px darkgray;
+    text-align: center;
+
+    button {
+        margin: 10px;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 2em;
+        }
+    }
+   
+}
