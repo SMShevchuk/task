@@ -22,6 +22,10 @@ form {
         
     }
 }
+#numValid {
+    display: none;
+    color: red;
+}
 .bottomBtn {
     border: double 12px darkgray;
     text-align: center;

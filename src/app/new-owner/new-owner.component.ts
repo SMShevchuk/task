@@ -13,46 +13,68 @@ export class NewOwnerComponent implements OnInit {
   lastNameControl: FormControl | any;
   cityControl: FormControl | any;
   carNumberControl: FormControl | any;
-  brendControl: FormControl | any;
+  brandControl: FormControl | any;
   modelControl: FormControl | any;
   yearControl: FormControl | any;
 
-  // public cars = [
-  //   { number: 'AA111XX',
-  //     brand: 'audi',
-  //     model: 'a6',
-  //     year: 2010 },
-
-  //     { number: 'AA111XX',
-  //     brand: 'audi',
-  //     model: 'a6',
-  //     year: 2010 }
-  // ]
+ 
   public people: any;
   constructor(private _ownerService: OwnersService) { }
 
   ngOnInit(): void {
-    this.nameControl = new FormControl();
-    this.lastNameControl = new FormControl();
-    this.cityControl = new FormControl();
-    this.carNumberControl = new FormControl();
-    this.brendControl = new FormControl();
-    this.modelControl = new FormControl();
-    this.yearControl = new FormControl();
+    this.nameControl = new FormControl("", [Validators.required]);
+    this.lastNameControl = new FormControl("", [Validators.required]);
+    this.cityControl = new FormControl("", [Validators.required]);
+    this.carNumberControl = new FormControl("", [Validators.required]);
+    this.brandControl = new FormControl("", [Validators.required]);
+    this.modelControl = new FormControl("", [Validators.required]);
+    this.yearControl = new FormControl("", [Validators.required]);
     this.people = this._ownerService.getAll();
     console.log(this.people);
     console.log(7);
+    this.nameControl.statusChanges.subscribe((status: any) => {
+      console.log(status)});
+    
   }
+
+ 
 
   public idPers: any = new Date();
   
   public addNewOwner() {
     let id = this.idPers.getTime();
+
     console.log(id);
-    this._ownerService.add(this.nameControl.value, this.lastNameControl.value, this.cityControl.value,
-      this.carNumberControl.value, this.brendControl.value, this.modelControl.value,
+    let numCar:any = this.carNumberControl.value;
+    console.log(this._ownerService.getNumberCar(numCar));
+   
+    if (this._ownerService.getNumberCar(numCar) !== 1) {
+      console.log(numCar);
+      this._ownerService.add(this.nameControl.value, this.lastNameControl.value, this.cityControl.value,
+      this.carNumberControl.value, this.brandControl.value, this.modelControl.value,
       this.yearControl.value, id);
     
       this._ownerService.getOwnerId(1);
+
+      let btn:any = document.querySelector('#btnBack');
+      console.log(btn);
+      btn.click();
+    }
+    else {
+      let inf:any = document.getElementById('numValid');
+      console.log(inf);
+      inf.style.display = 'block';
+    }
+   
   }
+}
+function myValidator (formControl: FormControl ) {
+  if (formControl.value.length !==8) {
+    return {myValidator: {message: "invalid"}};
+  }
+  return null;
+} 
+
+function getNumberCar(numCar: any) {
+  throw new Error('Function not implemented.');
 }

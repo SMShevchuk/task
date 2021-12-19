@@ -5,84 +5,91 @@ import { Injectable } from '@angular/core';
 })
 export class OwnersService {
 
-  
-  private  ownerIdMain:any;
-
-getId(idEl:number) {
-  console.log(idEl);
-  this.ownerIdMain = idEl;
-  return idEl;
-}
-
-getIdMain() {
-  console.log(this.ownerIdMain);
-  return this.ownerIdMain;
-}
-  private people:any = [
-   
+  public people:any = [
     {
       id: 1,
-      name: 'djon',
-      city: 'derb',
-      lastName: 'zzx',
+      name: 'Djon',
+      city: 'London',
+      lastName: 'Wilson',
       cars: [
         {
           number: 'AA0001XX',
           brand: 'audi',
           model: 'a6',
-          year: 2010 
+          year: 2021 
         },
         {
           number: 'AA0002XX',
           brand: 'audi',
-          model: 'a6',
+          model: 'a8',
           year: 2018 
         },  
         {
           number: 'AA0003XX',
           brand: 'audi',
-          model: 'a6',
-          year: 2018 
+          model: 'a4',
+          year: 2019 
         },  
       ]
     },
     {
       id: 2,
-      name: 'djon2',
-      city: 'defr',
-      lastName: 'zzjkx',
+      name: 'Oliver',
+      city: 'London',
+      lastName: 'Taylor',
       cars: [
         {
           number: 'AA1111XX',
-          brand: 'audi',
-          model: 'a6',
+          brand: 'Volkswagen',
+          model: 'B6',
           year: 2010 
         },
         {
           number: 'AA1112XX',
-          brand: 'audi',
-          model: 'a6',
+          brand: 'Volkswagen',
+          model: 'Golf',
           year: 2018 
         },  
         {
           number: 'AA1113XX',
-          brand: 'audi',
-          model: 'a6',
-          year: 2018 
+          brand: 'Volkswagen',
+          model: 'TT',
+          year: 2020 
         },  
       ]
     },
   ];
 
+  
+  private  ownerIdMain:any;
+
+getId(idEl:number) {
+  this.ownerIdMain = idEl;
+  return idEl;
+}
+
+getIdMain() {
+  return this.ownerIdMain;
+}
+private numAuto: any = 0;
+getNumberCar(num: any) {
+  for (let i=0; i<this.people.length; i++) {
+    for (let j=0; j<this.people[i].cars.length; j++){
+      if (this.people[i].cars[j].number == num) {
+        this.numAuto = 1;
+        return this.numAuto;
+      }    
+    }    
+  }
+}
+ 
   public getAll() {
     return this.people;
   }
 
   public getOwnerId(id:number) {
-    console.log(this.people.length);
     for (let i=0; i<this.people.length; i++) {
       if (this.people[i].id == id) {
-        console.log(this.people[i]);
         return this.people[i];
       }
     }
@@ -93,13 +100,25 @@ getIdMain() {
   }
 
   public removeCar(auto: any, cars:any) {
-    let index =cars.indexOf(auto);
+    let index = cars.indexOf(auto);
     if (index > -1) {
       cars.splice(index, 1);
     }
   }
 
-  public add(name:any, lastName:any, city:any, carNumber:any, brend:any, model:any, year:any, id:any) {
+  
+  public editPeople(name:any, lastName:any, city:any, id:any) {
+    
+    for (let i=0;i<this.people.length;i++) {
+      if (this.people[i].id == id) {
+        this.people[i].name = name,
+        this.people[i].lastName = lastName,
+        this.people[i].city = city       
+      }
+    }
+  }
+
+  public add(name:any, lastName:any, city:any, carNumber:any, brand:any, model:any, year:any, id:any) {
     return (this.people.push({ 
       name: name,
       lastName: lastName,
@@ -108,7 +127,7 @@ getIdMain() {
       cars: [
         {
           number: carNumber,
-          brend: brend,
+          brand: brand,
           model: model,
           year: year
         }

@@ -27,29 +27,26 @@ export class HomeComponent implements OnInit {
   }
 
   public choosePerson(el:any, person:any) {
+    let x = el.parentNode.childNodes;
+    for (let i=0;i<x.length-1;i++) {
+      x[i].style.fontWeight = "400";
+    }
+    
     this.owner = el;
-    console.log(this.owner);
     document.querySelector("#look")?.classList.remove("disabled");
     document.querySelector("#edit")?.classList.remove("disabled");
    
     el.style.fontWeight = "700";
     this._ownerService.getId(person.id);
     this._ownerService.getIdMain();
-    console.log(person);
    
     this.personLoocId = person.id;
   }
   public lookPerson() {
-    console.log(this.personLoocId);
     document.querySelector("#look")?.classList.add("disabled");
-    document.querySelector("#edit")?.classList.add("disabled");
-    
-    
+    document.querySelector("#edit")?.classList.add("disabled"); 
   }
-  public editPerson() {
-    document.querySelector("#edit")?.classList.add("disabled");
-    document.querySelector("#look")?.classList.add("disabled");
-  }
+
 
   public removeLine(per:any) {
     console.log(per);

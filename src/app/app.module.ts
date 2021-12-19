@@ -5,22 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ChangingComponent } from './changing/changing.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OwnersService } from './owners.service';
 import { NewOwnerComponent } from './new-owner/new-owner.component';
+import { LookComponent } from './look/look.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ChangingComponent,
-    NewOwnerComponent
+    NewOwnerComponent,
+    LookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [OwnersService],
   bootstrap: [AppComponent]

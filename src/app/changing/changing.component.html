@@ -1,72 +1,76 @@
-    
-      <div class="leftCol  w-50">
-        <h2>Owner:</h2>
-        <div class="form-floating mb-3">
-          <input type="text" [formControl]="lastNameControl" class="form-control" id="floatingLastName" placeholder="Your last name:">
-          <label for="floatingLastName">Last name:</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" [formControl]="nameControl" class="form-control" id="floatingName" placeholder="Your name:">
-            <label for="floatingName">Name:</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" [formControl]="cityControl" class="form-control" id="floatingCity" placeholder="Your city:">
-            <label for="floatingMiddleName">City:</label>
-        </div>
-      </div>
-      <table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Car number</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Model</th>
-            <th scope="col">Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="carLine" *ngFor = "let car of cars"
-               style="padding: 3px;">
-            <td>{{car.number}}</td>
-            <td>{{car.brand}}</td>
-            <td>{{car.model}}</td>
-            <td>{{car.year}}</td>
-            <td><button type="button" (click)="removeLine(car, cars)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
-          </tr>
-          
-          </tbody>
-      </table>
+<div class="wrap">
+  
+  <div class="leftCol  w-50">
+    <h2>Owner:</h2>
+    <div class="form-floating mb-3">
+      <input type="text" [formControl]="lastNameControl" class="form-control" id="floatingLastName" placeholder="Your last name:">
+      <label for="floatingLastName">Last name:</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" [formControl]="nameControl" class="form-control" id="floatingName" placeholder="Your name:">
+        <label for="floatingName">Name:</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" [formControl]="cityControl" class="form-control" id="floatingCity" placeholder="Your city:">
+        <label for="floatingMiddleName">City:</label>
+    </div>
+  </div>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Car number</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
+        <th scope="col">Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="carLine" *ngFor = "let car of cars"
+            style="padding: 3px;">
+        <td>{{car.number}}</td>
+        <td>{{car.brand}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.year}}</td>
+        <td><button type="button" (click)="removeLine(car, cars)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+      </tr>     
+    </tbody>
+  </table>
 
       
-      <button id="addButton"  type="button" (click)="addAuto()" class="btn btn-primary"><i class="fas fa-plus"></i> Add auto</button>
-       
+  <button id="addButton"  type="button" (click)="addAuto()" class="btn btn-primary m-1"><i class="fas fa-plus"></i> Add auto</button>
+    <hr>
 
-      <div id="addCar">
-        <div>
-          <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
-          <label for="floatingLastName">Car number:</label>
-        </div>
-        <div>
-          <input type="text" [formControl]="brandControl" class="form-control" id="floatingBrend" placeholder="Brand name:">
-          <label for="floatingLastName">Brand:</label>
-        </div>
-        <div>
-          <input type="text" [formControl]="modelControl" class="form-control" id="floatingModel" placeholder="Model name:">
-          <label for="floatingLastName">Model:</label>
-        </div>
-        <div>
-          <input type="text" [formControl]="yearControl" class="form-control" id="floatingYear" placeholder="Year:">
-          <label for="floatingLastName">Year:</label>
-        </div>
-        <div class="btnSave">
-          <button type="button" (click)="saveAddCar()" class="btn btn-primary center"><i class="far fa-save"></i> Save</button>
-        </div>
-          
-      </div>
+  <div id="addCar">
+    <div>
+      <input type="text" [formControl]="carNumberControl" class="form-control" id="floatingCarNumber" placeholder="Your car number:">
+      <label for="floatingLastName">Car number:</label>
+    </div>
+    <div>
+      <input type="text" [formControl]="brandControl" class="form-control" id="floatingBrend" placeholder="Brand name:">
+      <label for="floatingLastName">Brand:</label>
+    </div>
+    <div>
+      <input type="text" [formControl]="modelControl" class="form-control" id="floatingModel" placeholder="Model name:">
+      <label for="floatingLastName">Model:</label>
+    </div>
+    <div>
+      <input type="text" [formControl]="yearControl" class="form-control" id="floatingYear" placeholder="Year:">
+      <label for="floatingLastName">Year:</label>
+    </div>
+    <div class="btnSave">
+      <button type="button" (click)="saveAddCar()" class="btn btn-primary center"><i class="far fa-save"></i> Save</button>
+    </div>
       
+  </div>
+  
+  <div class="btnSave">
+    <button type="button" id="saveName" (click)="saveName()" class="btn btn-primary center"><i class="far fa-save"></i> Save</button>
+  </div>
+  <div class="m-3">
+    <button type="button" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> 
+      <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
+    </button>
+  </div>
 
-<div class="m-3">
-  <button type="button" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> 
-    <a class="linkBack" routerLink="/home" routerLinkActive="active">Back</a>  
-  </button>
-</div>
-
+ 
+</div>   
