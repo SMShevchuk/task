@@ -25,7 +25,6 @@ export class LookComponent implements OnInit {
     this.idTemp = this._ownerService.getIdMain() || 1;
     this.ownerForId = this._ownerService.getOwnerId(this.idTemp);
     this.cars = this.ownerForId.cars;
-   
     this.name = this.ownerForId.name;
     this.lastName = this.ownerForId.lastName;
     this.city = this.ownerForId.city;
