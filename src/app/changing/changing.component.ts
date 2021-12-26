@@ -17,6 +17,7 @@ export class ChangingComponent implements OnInit {
   modelControl: FormControl | any;
   yearControl: FormControl | any;
 
+  public idPers: any = new Date();
   public cars:any;
   public people: any;
   public idTemp:any =1;
@@ -30,13 +31,13 @@ export class ChangingComponent implements OnInit {
     this.idTemp = this._ownerService.getIdMain() || 1;
     this.ownerForId = this._ownerService.getOwnerId(this.idTemp);
     this.cars = this.ownerForId.cars;
-    this.nameControl = new FormControl(this.ownerForId.name);
-    this.lastNameControl = new FormControl(this.ownerForId.lastName);
-    this.cityControl = new FormControl(this.ownerForId.city);
-    this.carNumberControl = new FormControl();
-    this.brandControl = new FormControl();
-    this.modelControl = new FormControl();
-    this.yearControl = new FormControl();
+    this.nameControl = new FormControl(this.ownerForId.name, [Validators.required, Validators.pattern('[a-zA-Z]*')]);
+    this.lastNameControl = new FormControl(this.ownerForId.lastName, [Validators.required, Validators.pattern('[a-zA-Z]*')]);
+    this.cityControl = new FormControl(this.ownerForId.city, [Validators.required, Validators.pattern('[a-zA-Z]*')]);
+    this.carNumberControl = new FormControl('',  [Validators.required, ]); //Validators.pattern('^[ABCEHIKMOPTX]{2}\d{4}(?<!0{4})[ABCEHIKMOPTX]{2}$'));
+    this.brandControl = new FormControl('',  [Validators.required, Validators.pattern('[a-zA-Z]*')]);
+    this.modelControl = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z1-9]*')]);
+    this.yearControl = new FormControl('', [Validators.required , Validators.min(1990), Validators.max(this.idPers.getFullYear())]);
     
 
   }
@@ -58,12 +59,18 @@ export class ChangingComponent implements OnInit {
     let numCar:any = this.carNumberControl.value;
    
     if (this._ownerService.getNumberCar(numCar) !== 1) {
-      this.ownerForId.cars.push({
-        number: this.carNumberControl.value,
-        brand: this.brandControl.value,
-        model: this.modelControl.value,
-        year: this.yearControl.value
-      });
+      if (this.carNumberControl.valid&&this.brandControl.valid&&this.modelControl.valid&&this.yearControl.valid) {
+       this.ownerForId.cars.push({
+          number: this.carNumberControl.value,
+          brand: this.brandControl.value,
+          model: this.modelControl.value,
+          year: this.yearControl.value
+        });
+      }
+      else {
+        alert('Enter valid data!!!');
+      }
+      
       let butSave:any = document.querySelector('#saveName');
     butSave.style.display = "block";
     }
@@ -74,20 +81,28 @@ export class ChangingComponent implements OnInit {
     
   }
   public saveName() {
-    this._ownerService.editPeople(this.nameControl.value,this.lastNameControl.value,this.cityControl.value,this.idTemp);
+    if (this.nameControl.valid&&this.lastNameControl.valid&&this.cityControl.valid) {
+      this._ownerService.editPeople(this.nameControl.value,this.lastNameControl.value,this.cityControl.value,this.idTemp);
+    }
+    else {
+      alert('No corect DATA!!!');
+    }
   }
 
   public removeLine(line:any, cars:any) {
-    let answer = confirm("You really want to delete?");
-    if (answer==true) {
-      this._ownerService.removeCar(line, cars);
+    if (cars.length>1) {
+      let answer = confirm("You really want to delete?");
+      if (answer==true) {
+        this._ownerService.removeCar(line, cars);
+      }
     }
+    else {
+      alert("It is the last car!!! ");
+    }
+    
   }
 
   
 
-}
-function disabled(disabled: any) {
-  throw new Error('Function not implemented.');
 }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { OwnersService } from '../owners.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { OwnersService } from '../owners.service';
 })
 export class HomeComponent implements OnInit {
 
-
   public people: any;
   public owner: any;
   public personLooc: any;
@@ -17,10 +15,7 @@ export class HomeComponent implements OnInit {
   public personEdit: any;
 
   constructor(private _ownerService: OwnersService) {
-
   }
-
- 
 
   ngOnInit(): void {
     this.people = this._ownerService.getAll();
@@ -39,17 +34,15 @@ export class HomeComponent implements OnInit {
     el.style.fontWeight = "700";
     this._ownerService.getId(person.id);
     this._ownerService.getIdMain();
-   
     this.personLoocId = person.id;
   }
+
   public lookPerson() {
     document.querySelector("#look")?.classList.add("disabled");
     document.querySelector("#edit")?.classList.add("disabled"); 
   }
 
-
   public removeLine(per:any) {
-    console.log(per);
     let answer = confirm("You really want to delete?");
     if (answer==true) {
       this._ownerService.remove(per);

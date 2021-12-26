@@ -1,7 +1,7 @@
 
 
 
-<form #form>
+<form #form id="formAdd">
     <div class="leftCol  w-50">
       <h2>Owner:</h2>
       <div class="form-floating mb-3">
@@ -42,7 +42,7 @@
         
   </form> 
   <div class="bottomBtn">
-    <button type="button"  (click)="addNewOwner();" class="btn btn-dark"><i class="far fa-save"></i>Save</button>
+    <button id="saveAuto" type="button"  (click)="addNewOwner();" class="btn btn-dark" [disabled]="correct"><i class="far fa-save"></i>Save</button>
     <button type="button"  class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> 
         <a class="linkBack" id="btnBack" routerLink="/home" routerLinkActive="active">Back</a>  
     </button>

@@ -61,7 +61,7 @@ export class OwnersService {
   ];
 
   
-  private  ownerIdMain:any;
+private  ownerIdMain:any;
 
 getId(idEl:number) {
   this.ownerIdMain = idEl;
@@ -71,6 +71,7 @@ getId(idEl:number) {
 getIdMain() {
   return this.ownerIdMain;
 }
+
 private numAuto: any = 0;
 getNumberCar(num: any) {
   for (let i=0; i<this.people.length; i++) {
@@ -82,58 +83,58 @@ getNumberCar(num: any) {
     }    
   }
 }
- 
-  public getAll() {
-    return this.people;
-  }
 
-  public getOwnerId(id:number) {
-    for (let i=0; i<this.people.length; i++) {
-      if (this.people[i].id == id) {
-        return this.people[i];
-      }
+public getAll() {
+  return this.people;
+}
+
+public getOwnerId(id:number) {
+  for (let i=0; i<this.people.length; i++) {
+    if (this.people[i].id == id) {
+      return this.people[i];
     }
   }
+}
 
-  public remove(id: number) {
-    return this.people = this.people.filter((owner: { id: number; }) => owner.id !== id);
+public remove(id: number) {
+  return this.people = this.people.filter((owner: { id: number; }) => owner.id !== id);
+}
+
+public removeCar(auto: any, cars:any) {
+  let index = cars.indexOf(auto);
+  if (index > -1) {
+    cars.splice(index, 1);
   }
+}
 
-  public removeCar(auto: any, cars:any) {
-    let index = cars.indexOf(auto);
-    if (index > -1) {
-      cars.splice(index, 1);
-    }
-  }
 
+public editPeople(name:any, lastName:any, city:any, id:any) {
   
-  public editPeople(name:any, lastName:any, city:any, id:any) {
-    
-    for (let i=0;i<this.people.length;i++) {
-      if (this.people[i].id == id) {
-        this.people[i].name = name,
-        this.people[i].lastName = lastName,
-        this.people[i].city = city       
-      }
+  for (let i=0;i<this.people.length;i++) {
+    if (this.people[i].id == id) {
+      this.people[i].name = name,
+      this.people[i].lastName = lastName,
+      this.people[i].city = city       
     }
   }
+}
 
-  public add(name:any, lastName:any, city:any, carNumber:any, brand:any, model:any, year:any, id:any) {
-    return (this.people.push({ 
-      name: name,
-      lastName: lastName,
-      city: city,
-      id: id,
-      cars: [
-        {
-          number: carNumber,
-          brand: brand,
-          model: model,
-          year: year
-        }
-      ]
-     }))
-  }
+public add(name:any, lastName:any, city:any, carNumber:any, brand:any, model:any, year:any, id:any) {
+  return (this.people.push({ 
+    name: name,
+    lastName: lastName,
+    city: city,
+    id: id,
+    cars: [
+      {
+        number: carNumber,
+        brand: brand,
+        model: model,
+        year: year
+      }
+    ]
+    }))
+}
 
   constructor() { }
 }
